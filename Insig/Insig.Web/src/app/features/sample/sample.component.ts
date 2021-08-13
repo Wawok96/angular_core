@@ -5,6 +5,7 @@ import { switchMapTo } from "rxjs/operators";
 
 export interface SampleDto {
     name: string;
+    palindrome: string;
 }
 
 @Component({

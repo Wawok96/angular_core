@@ -22,7 +22,7 @@ namespace Insig.Infrastructure.Queries
         public async Task<List<SampleDTO>> GetSampleData(SampleParameter query)
         {
             return await _sqlQueryBuilder
-                .Select("Name")
+                .Select("*")
                 .From("Sample")
                 .BuildQuery<SampleDTO>()
                 .ExecuteToList();

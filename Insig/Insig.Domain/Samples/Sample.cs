@@ -1,6 +1,7 @@
 ﻿using EnsureThat;
 using Insig.Common.Exceptions;
 using Insig.Domain.Common;
+using System;
 
 namespace Insig.Domain.Samples
 {
@@ -11,11 +12,13 @@ namespace Insig.Domain.Samples
             EnsureThatNameIsCorrect(name);
 
             Name = name;
+            Palindrome = CheckThatNameIsPalindrome(name);
         }
 
         public int Id { get; }
 
         public string Name { get; private set; }
+        public bool Palindrome { get; private set; }
 
         private void EnsureThatNameIsCorrect(string name)
         {
@@ -25,6 +28,13 @@ namespace Insig.Domain.Samples
             {
                 throw new DomainException($"Sample value with name: {name} is not allowed.");
             }
+        }
+        public bool CheckThatNameIsPalindrome(string name)
+        {
+            char[] charArray = name.ToCharArray();
+            Array.Reverse(charArray);
+            var reversedName = new string(charArray);
+            return name == reversedName;
         }
     }
 }
