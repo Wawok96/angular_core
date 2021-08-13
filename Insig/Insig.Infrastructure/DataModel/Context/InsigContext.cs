@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Insig.Common.Auth;
 using Insig.Domain.Common;
+using Insig.Domain.Houses;
 using Insig.Domain.Samples;
 using Insig.Infrastructure.DataModel.Mappings;
 using Microsoft.EntityFrameworkCore;
@@ -23,10 +24,12 @@ namespace Insig.Infrastructure.DataModel.Context
         }
 
         public DbSet<Sample> Samples { get; set; }
+        public DbSet<House> Houses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new SampleConfiguration());
+            builder.ApplyConfiguration(new HouseConfiguration());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

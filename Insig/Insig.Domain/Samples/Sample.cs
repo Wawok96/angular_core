@@ -29,7 +29,7 @@ namespace Insig.Domain.Samples
                 throw new DomainException($"Sample value with name: {name} is not allowed.");
             }
         }
-        public bool CheckThatNameIsPalindrome(string name)
+        private bool CheckThatNameIsPalindrome(string name)
         {
             char[] charArray = name.ToCharArray();
             Array.Reverse(charArray);
