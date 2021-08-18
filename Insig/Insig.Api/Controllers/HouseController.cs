@@ -44,5 +44,12 @@ namespace Insig.Api.Controllers
             await _commandDispatcher.Dispatch(command);
             return Ok();
         }
+        [Authorize(Policies.Consumer)]
+        [HttpPatch("houses")]
+        public async Task<IActionResult> DeleteHouses([FromBody] DeleteHouseCommand command)
+        {
+            await _commandDispatcher.Dispatch(command);
+            return Ok();
+        }
     }
 }

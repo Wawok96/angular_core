@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ApiSampleService } from "@app/core/services/api-sample.service";
 import { Observable } from "rxjs";
-import { switchMapTo } from "rxjs/operators";
-
+import { sample, switchMapTo } from "rxjs/operators";
+import { FormsModule } from "@angular/forms";
 export interface SampleDto {
     name: string;
     palindrome: string;

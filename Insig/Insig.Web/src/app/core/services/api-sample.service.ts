@@ -22,4 +22,5 @@ export class ApiSampleService {
     addSampleData(sample: SampleDto): Observable<SampleDto> {
         return this._apiClientService.post(`${appConfig.apiUrl}/values/samples`, { data: sample });
     }
+
 }

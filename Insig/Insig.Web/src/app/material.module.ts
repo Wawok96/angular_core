@@ -7,6 +7,8 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
     imports: [
@@ -17,8 +19,11 @@ import { MatToolbarModule } from "@angular/material/toolbar";
         MatGridListModule,
         MatFormFieldModule,
         MatInputModule,
-        MatMenuModule
+        MatMenuModule,
+        MatCheckboxModule,
+        MatSnackBarModule
     ],
+
     exports: [
         MatButtonModule,
         MatCardModule,
@@ -27,7 +32,9 @@ import { MatToolbarModule } from "@angular/material/toolbar";
         MatGridListModule,
         MatFormFieldModule,
         MatInputModule,
-        MatMenuModule
+        MatMenuModule,
+        MatCheckboxModule,
+        MatSnackBarModule
     ]
 })
 export class MaterialModule { }

@@ -10,6 +10,8 @@ namespace Insig.ApplicationServices.Boundaries
     public interface IHouseRepository
     {
         void EnsureThatHouseDoesNotExist(string name);
-        void Store(House house); 
+        void EnsureThatHouseExist(string name);
+        void Store(House house);
+        void Delete(string name);
     }
 }

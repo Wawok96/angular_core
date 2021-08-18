@@ -20,12 +20,28 @@ namespace Insig.Infrastructure.Domain
             _context = context;
         }
 
+        public void Delete(string name)
+        {
+           var foundedHouse = _context.Houses.FirstOrDefault(x => x.Name == name && x.Deleted == false);
+            foundedHouse.Deleted = true;
+            _context.Houses.Update(foundedHouse);
+        }
+
         public void EnsureThatHouseDoesNotExist(string name)
         {
-            var sample = _context.Houses.FirstOrDefault(r => r.Name == name);
+            var sample = _context.Houses.FirstOrDefault(r => r.Name == name && r.Deleted == false);
             if (sample != null)
             {
                 throw new DomainException($"Provided house name: \"{name}\" already exist.");
+            }
+        }
+
+        public void EnsureThatHouseExist(string name)
+        {
+            var sample = _context.Houses.FirstOrDefault(r => r.Name == name && r.Deleted == false);
+            if (sample == null)
+            {
+                throw new DomainException($"Provided house name: \"{name}\" not exist.");
             }
         }
 

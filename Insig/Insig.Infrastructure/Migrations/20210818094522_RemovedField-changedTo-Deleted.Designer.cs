@@ -4,14 +4,16 @@ using Insig.Infrastructure.DataModel.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Insig.Infrastructure.Migrations
 {
     [DbContext(typeof(InsigContext))]
-    partial class InsigContextModelSnapshot : ModelSnapshot
+    [Migration("20210818094522_RemovedField-changedTo-Deleted")]
+    partial class RemovedFieldchangedToDeleted
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

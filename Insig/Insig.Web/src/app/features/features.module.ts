@@ -7,6 +7,8 @@ import { LogoutModule } from "./account/logout/logout.module";
 import { RegisterModule } from "./account/register/register.module";
 import { FeaturesRoutingModule } from "./features-routing.module";
 import { SampleComponent } from "./sample/sample.component";
+import { HouseComponent } from './house/house.component';
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
     imports: [
@@ -15,13 +17,16 @@ import { SampleComponent } from "./sample/sample.component";
         MaterialModule,
         LoginModule,
         RegisterModule,
-        LogoutModule
+        LogoutModule,
+        FormsModule
     ],
     declarations: [
-        SampleComponent
+        SampleComponent,
+        HouseComponent
     ],
     exports: [
-        SampleComponent
+        SampleComponent,
+        HouseComponent
     ]
 })
 export class FeaturesModule { }

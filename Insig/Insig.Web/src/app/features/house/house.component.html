@@ -1,0 +1,41 @@
+<mat-card>
+    <h1 class="title"> House explorer </h1>
+    <div>
+        <mat-form-field class="mr-10" appearance="standard">
+            <mat-label>NAME</mat-label>
+            <input [(ngModel)]="houseName" matInput placeholder="ex. Limon House">
+            <mat-icon matSuffix>house</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="mr-10" appearance="standard">
+            <mat-label>SIZE</mat-label>
+            <input [(ngModel)]="houseSize" type="number" maxlength="8" matInput placeholder="145,55">
+        </mat-form-field>
+
+        <mat-checkbox [(ngModel)]="houseSingleFloor" class="mr-10" class="example-margin" color="primary"> single-floor
+        </mat-checkbox>
+
+        <button mat-raised-button color="primary" (click)="addHouse()">
+            <mat-icon matSuffix>add</mat-icon>
+            add house
+        </button>
+    </div>
+    <div>
+        <mat-card class="items-Cards" *ngFor="let item of houses | async">
+            <div>
+                <H3> {{item.name}}</H3>
+            </div>
+            <div>
+                complete size (meters):
+                {{ item.sizeInMeters }}
+            </div>
+            <div>
+                single floor:
+                {{ item.singleFloor ? 'yes' : 'no' }}
+            </div>
+            <button class="delete-icon right" mat-raised-button (click)="deleteHouse(item.name)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </mat-card>
+    </div>
+</mat-card>

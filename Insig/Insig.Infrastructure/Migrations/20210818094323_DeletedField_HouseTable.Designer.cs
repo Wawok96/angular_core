@@ -4,14 +4,16 @@ using Insig.Infrastructure.DataModel.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Insig.Infrastructure.Migrations
 {
     [DbContext(typeof(InsigContext))]
-    partial class InsigContextModelSnapshot : ModelSnapshot
+    [Migration("20210818094323_DeletedField_HouseTable")]
+    partial class DeletedField_HouseTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,11 +34,11 @@ namespace Insig.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("Deleted")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Removed")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("SingleFloor")
                         .HasColumnType("bit");

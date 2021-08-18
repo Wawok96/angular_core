@@ -19,6 +19,7 @@ namespace Insig.Domain.Houses
             Name = name;
             SizeInMeters = sizeInMeters;
             SingleFloor = singleFloor;
+            Deleted = false;
         }
 
         public int Id { get; }
@@ -26,6 +27,7 @@ namespace Insig.Domain.Houses
         public string Name { get; private set; }
         public double SizeInMeters { get; private set; }
         public bool SingleFloor { get; private set; }
+        public bool Deleted { get; set; }
 
         private void EnsureThatNameIsCorrect(string name)
         {

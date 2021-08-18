@@ -27,6 +27,7 @@ namespace Insig.Infrastructure.Queries
             return await _sqlQueryBuilder
                 .Select("*")
                 .From("House")
+                .Where("Deleted", false)
                 .BuildQuery<HouseDTO>()
                 .ExecuteToList();
         }
