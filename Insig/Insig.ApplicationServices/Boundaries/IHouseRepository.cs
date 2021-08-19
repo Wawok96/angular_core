@@ -1,4 +1,5 @@
 ﻿using Insig.Domain.Houses;
+using Insig.PublishedLanguage.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace Insig.ApplicationServices.Boundaries
         void EnsureThatHouseDoesNotExist(string name);
         void EnsureThatHouseExist(string name);
         void Store(House house);
+        void Update(House house, int indexOfItemToUpdate);
         void Delete(string name);
     }
 }

@@ -9,6 +9,7 @@ import { FeaturesRoutingModule } from "./features-routing.module";
 import { SampleComponent } from "./sample/sample.component";
 import { HouseComponent } from './house/house.component';
 import { FormsModule } from "@angular/forms";
+import { DialogueComponent } from './house/dialogue/dialogue.component';
 
 @NgModule({
     imports: [
@@ -22,7 +23,8 @@ import { FormsModule } from "@angular/forms";
     ],
     declarations: [
         SampleComponent,
-        HouseComponent
+        HouseComponent,
+        DialogueComponent,
     ],
     exports: [
         SampleComponent,

@@ -51,5 +51,12 @@ namespace Insig.Api.Controllers
             await _commandDispatcher.Dispatch(command);
             return Ok();
         }
+        [Authorize(Policies.Consumer)]
+        [HttpPut("houses")]
+        public async Task<IActionResult> UpdateHouses([FromBody] UpdateHouseCommand command)
+        {
+            await _commandDispatcher.Dispatch(command);
+            return Ok();
+        }
     }
 }

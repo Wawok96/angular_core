@@ -3,6 +3,7 @@ using Insig.ApplicationServices.Boundaries;
 using Insig.Common.Exceptions;
 using Insig.Domain.Houses;
 using Insig.Infrastructure.DataModel.Context;
+using Insig.PublishedLanguage.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,12 @@ namespace Insig.Infrastructure.Domain
            var foundedHouse = _context.Houses.FirstOrDefault(x => x.Name == name && x.Deleted == false);
             foundedHouse.Deleted = true;
             _context.Houses.Update(foundedHouse);
+        }
+        public void Update(House house, int IdOfItemToUpdate)
+        {
+           var houseFromDatabase = _context.Houses.FirstOrDefault(x => x.Id == IdOfItemToUpdate);
+            houseFromDatabase.UpdateFields(house);
+            _context.Houses.Update(houseFromDatabase);
         }
 
         public void EnsureThatHouseDoesNotExist(string name)

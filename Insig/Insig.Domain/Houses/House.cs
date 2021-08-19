@@ -29,6 +29,15 @@ namespace Insig.Domain.Houses
         public bool SingleFloor { get; private set; }
         public bool Deleted { get; set; }
 
+        public void UpdateFields(House house)
+        {
+            EnsureThatNameIsCorrect(house.Name);
+            EnsureThatSizeIsCorrect(house.SizeInMeters);
+            Name = house.Name;
+            SizeInMeters = house.SizeInMeters;
+            SingleFloor = house.SingleFloor;
+        }
+
         private void EnsureThatNameIsCorrect(string name)
         {
             EnsureArg.IsNotNullOrWhiteSpace(name, nameof(name));
@@ -40,6 +49,6 @@ namespace Insig.Domain.Houses
                 throw new DomainException($"House value with size: {size} is not allowed.");
             }
         }
-
+        
     }
 }

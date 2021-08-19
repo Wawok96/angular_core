@@ -3,8 +3,11 @@ import { ApiHouseService } from '@app/core/services/api-house.service';
 import { Observable } from "rxjs";
 import { switchMapTo } from "rxjs/operators";
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogueComponent } from './dialogue/dialogue.component';
 
 export interface HouseDto {
+  id: number;
   name: string;
   sizeInMeters: number;
   singleFloor: boolean;
@@ -20,11 +23,21 @@ export class HouseComponent implements OnInit {
   houseName: string;
   houseSize: number;
   houseSingleFloor: boolean;
+  emptyHouseSize: number;
 
-  constructor(private _houseService: ApiHouseService, private _snackBar: MatSnackBar) { }
+  constructor(private _houseService: ApiHouseService, private _snackBar: MatSnackBar, public dialog: MatDialog) { }
+
+  openDialog(house: HouseDto) {
+    let dialogRef = this.dialog.open(DialogueComponent);
+    let instance = dialogRef.componentInstance;
+    instance.oldName = house.name;
+    instance.house = house;
+    instance.closeDialog.subscribe(() => console.log("fdfd"))
+  }
 
   addHouse(): void {
     const newHouse: HouseDto = {
+      id: 0,
       name: this.houseName,
       sizeInMeters: this.houseSize,
       singleFloor: this.houseSingleFloor
@@ -36,12 +49,16 @@ export class HouseComponent implements OnInit {
     this._snackBar.open(newHouse.name + " added to your houses!", "close", {
       duration: 5000
     })
+    this.houseSingleFloor = false;
+    this.houseName = '';
+    this.houseSize = this.emptyHouseSize;
   }
 
 
   deleteHouse(name: string): void {
     const newHouse: HouseDto = {
       name,
+      id: 0,
       sizeInMeters: 0,
       singleFloor: false
     }
@@ -54,15 +71,14 @@ export class HouseComponent implements OnInit {
     })
   }
 
-
-  isFieldsFilled(): boolean {
-    if (this.houseName.length > 0 && this.houseSize) {
-      return true;
-    }
-    return false;
-  }
-
   ngOnInit(): void {
     this.houses = this._houseService.getHouseData();
+    this.houseName = '';
+  }
+  addButonDisabled(): boolean {
+    if (this.houseName != '' && this.houseSize != null && this.houseSize != undefined) {
+      return false;
+    }
+    return true;
   }
 }
